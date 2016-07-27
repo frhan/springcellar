@@ -1,2 +1,13 @@
-CREATE table wines(id bigint not null auto_increment,name VARCHAR(100),year INT, grapes VARCHAR(100),country VARCHAR(100),
-region VARCHAR(100), description TEXT,picture VARCHAR(100),PRIMARY KEY (id));
+
+CREATE TABLE "wine"(
+  "id" bigint NOT NULL AUTO_INCREMENT,
+  "name" VARCHAR(255) NOT NULL ,
+  "year" VARCHAR(4),
+  "grapes" VARCHAR(100),
+  "country" VARCHAR(100),
+  "region" VARCHAR(100),
+  "description" longtext,
+  "picture" VARCHAR(100),
+  PRIMARY KEY ("id")
+)
+
