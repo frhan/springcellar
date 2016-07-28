@@ -6,8 +6,10 @@ import com.farhan.springcellar.services.WineService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,9 +28,18 @@ public class WineController {
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Wine findById(@PathVariable("id") String id){
-        return new Wine();
+    public Wine findById(@PathVariable("id") Long id){
+        return wineService.getOne(id);
     }
+
+    @RequestMapping(value = "/create",method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public Wine create(@RequestBody @Valid Wine wine)
+    {
+      return  wineService.create(wine);
+    }
+
+
 
 
 }

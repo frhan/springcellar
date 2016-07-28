@@ -24,4 +24,8 @@ public class WineService {
         return wineRepository.findAll();
     }
 
+    public Wine create(Wine wine){
+       return wineRepository.save(wine);
+    }
+
 }
