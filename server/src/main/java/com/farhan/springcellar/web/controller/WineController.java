@@ -39,7 +39,13 @@ public class WineController {
       return  wineService.create(wine);
     }
 
+    @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
+    public Wine update(){
+        return null;
+    }
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    public void delete(){
 
-
+    }
 
 }
