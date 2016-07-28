@@ -18,7 +18,7 @@ public class Wine {
     private String name;
 
     @Column(name = "year")
-    private int year;
+    private String year;
 
     @Column(name = "grapes")
     private String grapes;
@@ -52,11 +52,11 @@ public class Wine {
         this.name = name;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
