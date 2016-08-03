@@ -16,8 +16,9 @@ public class WineService {
     @Autowired
     private WineRepository wineRepository;
 
-    public Wine getOne(Long id){
-        return wineRepository.getOne(id);
+    public Wine getOne(Long id)
+    {
+        return wineRepository.findOne(id);
     }
 
     public List<Wine> findAll(){

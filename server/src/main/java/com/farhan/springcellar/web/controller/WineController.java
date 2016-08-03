@@ -24,11 +24,13 @@ public class WineController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Wine> findAll(){
-        return new ArrayList<Wine>();
+
+       return wineService.findAll();
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public Wine findById(@PathVariable("id") Long id){
+        logger.trace("***Find By Id***"+id);
         return wineService.getOne(id);
     }
 
@@ -39,10 +41,11 @@ public class WineController {
       return  wineService.create(wine);
     }
 
-    @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
+    @RequestMapping(value = "/update/{id}",method = RequestMethod.PUT)
     public Wine update(){
         return null;
     }
+
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
     public void delete(){
 
