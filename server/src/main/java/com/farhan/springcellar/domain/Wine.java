@@ -1,6 +1,9 @@
 package com.farhan.springcellar.domain;
 
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -98,5 +101,10 @@ public class Wine {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    @Override
+    public String toString() {
+        return  ReflectionToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
     }
 }

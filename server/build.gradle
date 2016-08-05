@@ -33,6 +33,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-jdbc")
     //runtime("mysql:mysql-connector-java")
 	compile 'postgresql:postgresql:9.1-901-1.jdbc4'
+	compile 'org.apache.commons:commons-lang3:3.4'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 

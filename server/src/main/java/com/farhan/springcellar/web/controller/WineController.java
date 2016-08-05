@@ -1,5 +1,6 @@
 package com.farhan.springcellar.web.controller;
 
+import com.farhan.springcellar.domain.RestResponse;
 import com.farhan.springcellar.domain.Wine;
 import com.farhan.springcellar.services.WineService;
 
@@ -34,7 +35,7 @@ public class WineController {
         return wineService.getOne(id);
     }
 
-    @RequestMapping(value = "/create",method = RequestMethod.POST)
+    @RequestMapping(value = "/new",method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public Wine create(@RequestBody @Valid Wine wine)
     {
@@ -42,13 +43,36 @@ public class WineController {
     }
 
     @RequestMapping(value = "/update/{id}",method = RequestMethod.PUT)
-    public Wine update(){
-        return null;
+    public RestResponse<Wine> update(@ModelAttribute Wine wine,@PathVariable("id") Long id)
+    {
+        Wine update = wineService.update(id,wine);
+
+        RestResponse<Wine> restResponse = new RestResponse<>();
+        if (update == null) {
+            restResponse.status = false;
+            restResponse.message = "Wine Update failed";
+            return  restResponse;
+        }
+
+        restResponse.status = true;
+        restResponse.message = "Wine Updated Sucessfully";
+        restResponse.object = update;
+        return restResponse;
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
-    public void delete(){
+    public RestResponse<Wine> delete(@PathVariable("id") Long id){
+        boolean deleted = wineService.delete(id);
+        RestResponse<Wine> restResponse = new RestResponse<>();
+        if (!deleted) {
+            restResponse.status = false;
+            restResponse.message = "Wine Deletion failed";
+            return restResponse;
+        }
 
+        restResponse.status = true;
+        restResponse.message = "Wine Deleted Sucessfully";
+        return restResponse;
     }
 
 }
