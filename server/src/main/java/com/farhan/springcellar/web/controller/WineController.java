@@ -37,9 +37,22 @@ public class WineController {
 
     @RequestMapping(value = "/new",method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public Wine create(@RequestBody @Valid Wine wine)
+    public RestResponse<Wine>  create(@ModelAttribute Wine wine)
     {
-      return  wineService.create(wine);
+        Wine createdWine = wineService.create(wine);
+        logger.trace("******created Wine****"+createdWine);
+        RestResponse<Wine> restResponse = new RestResponse<>();
+        if (createdWine == null) {
+            restResponse.status = false;
+            restResponse.message = "Wine creation failed";
+            return  restResponse;
+        }
+
+        restResponse.status = true;
+        restResponse.message = "Wine created Sucessfully";
+        restResponse.object = createdWine;
+
+        return restResponse;
     }
 
     @RequestMapping(value = "/update/{id}",method = RequestMethod.PUT)
