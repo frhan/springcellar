@@ -1,110 +1,49 @@
 package com.farhan.springcellar.domain;
 
+import org.springframework.data.annotation.Id;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
-@Entity
-@Table(name = "wines")
 public class Wine {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
+  @Id
+  public String id;
 
-    @NotNull
-    @Column(name = "name")
-    private String name;
+  private String name;
+  private String grapes;
 
-    @Column(name = "year")
-    private String year;
+  public Wine() {}
 
-    @Column(name = "grapes")
-    private String grapes;
+  public Wine(String name, String grapes) {
+    this.name = name;
+    this.grapes = grapes;
+  }
 
-    @Column(name = "country")
-    private String country;
+  public String getName() {
+    return name;
+  }
 
-    @Column(name = "region")
-    private String region;
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    @Column(name = "description")
-    private String description;
+  public String getGrapes() {
+    return grapes;
+  }
 
-    @Column(name = "picture")
-    private String picture;
+  public void setGrapes(String grapes) {
+    this.grapes = grapes;
+  }
+
+  public String getId() {
+    return id;
+  }
+
+  @Override
+  public String toString() {
+    return String.format(
+            "Wine[id=%s, name='%s', grapes='%s']",
+            id, name, grapes);
+  }
 
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public String getGrapes() {
-        return grapes;
-    }
-
-    public void setGrapes(String grapes) {
-        this.grapes = grapes;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    @Override
-    public String toString() {
-        return  ReflectionToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
-    }
 }
