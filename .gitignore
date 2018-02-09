@@ -39,7 +39,7 @@ transaction-logs
 out
 gradle
 
-/node_modules
+client/node_modules/
 /coverage
 /build
 .DS_Store
