@@ -26,6 +26,12 @@ public class WineController {
     service.addWine(wine);
   }
 
+  @GetMapping("/{id}")
+  @ResponseStatus(HttpStatus.OK)
+  public Wine getById(@PathVariable String id) {
+    return service.getWine(id);
+  }
+
   @GetMapping
   public List<Wine> getWines(){
     return service.getAll();

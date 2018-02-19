@@ -10,8 +10,12 @@ import java.util.List;
 @Service
 public class WineService {
 
-  @Autowired
   private WineRespository wineRespository;
+
+  @Autowired
+  public WineService(WineRespository wineRespository){
+    this.wineRespository = wineRespository;
+  }
 
   public final void addWine(final Wine wine){
     wineRespository.save(wine);
@@ -19,5 +23,9 @@ public class WineService {
 
   public List<Wine> getAll(){
     return wineRespository.findAll();
+  }
+
+  public Wine getWine(final String id){
+    return wineRespository.findOne(id);
   }
 }

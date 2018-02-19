@@ -12,6 +12,9 @@ public class Wine {
   private String description;
   private int price;
   private String grapes;
+  private String country;
+  private String region;
+  private int year;
 
   public Wine(){}
 

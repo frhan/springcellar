@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 class Wine extends Component {
-   
+
     render() {
         return (
             <div className="item col-xs-4 col-md-12  list-group-item" key={this.props.value.id}>
