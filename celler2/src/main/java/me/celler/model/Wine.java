@@ -10,6 +10,7 @@ public class Wine {
   @Id
   private String id;
 
+  @NonNull
   private String name;
   private String image;
   private String description;
@@ -33,8 +34,14 @@ public class Wine {
   }
 
   public Wine getUpdatedWine(final Wine wine){
-    this.country = wine.country;
     this.name = wine.name;
+    this.image = wine.image;
+    this.description = wine.description;
+    this.price = wine.price;
+    this.grapes = wine.grapes;
+    this.country = wine.country;
+    this.region = wine.region;
+    this.year = wine.year;
     return this;
   }
 }

@@ -30,9 +30,12 @@ public class WineController {
   }
 
   @GetMapping("/{id}")
-  @ResponseStatus(HttpStatus.OK)
-  public Wine getById(@PathVariable(value = "id") String id) {
-    return wineService.getWine(id);
+  public ResponseEntity<Wine> getById(@PathVariable(value = "id") String id) {
+    Wine wine = wineService.getWine(id);
+    if(wine == null) {
+      return ResponseEntity.notFound().build();
+    }
+    return ResponseEntity.ok(wine);
   }
 
   @GetMapping
@@ -40,7 +43,7 @@ public class WineController {
     return wineService.getAll();
   }
 
-  // Update a Note
+  // Update a Wine
   @PutMapping("/{id}")
   public ResponseEntity<Wine> updateNote(@PathVariable(value = "id") String id,
                                          @Valid @RequestBody Wine updateWine) {
